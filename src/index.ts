@@ -9,7 +9,7 @@ const getVariableType = (definition: any) => {
   if(definition.type.name) {
     return definition.type.name.value;
   } else {
-    return definition.type.type.name.value;
+    return `${definition.type.type.name.value}${definition.type.kind === "NonNullType" ? "!" : ""}`;
   }
 };
 

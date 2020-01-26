@@ -1,106 +1,40 @@
 const { getQuery } = require('./build');
 
 let query = `
-query IntrospectionQuery {
-  __schema {
-    queryType {
-      name
-    }
-    mutationType {
-      name
-    }
-    subscriptionType {
-      name
-    }
-    types {
-      ...FullType
-    }
-    directives {
-      name
-      description
-      locations
-      args {
-        ...InputValue
-      }
-    }
-  }
-}
-
-fragment FullType on __Type {
-  kind
-  name
-  description
-  fields(includeDeprecated: true) {
-    name
-    description
-    args {
-      ...InputValue
-    }
-    type {
-      ...TypeRef
-    }
-    isDeprecated
-    deprecationReason
-  }
-  inputFields {
-    ...InputValue
-  }
-  interfaces {
-    ...TypeRef
-  }
-  enumValues(includeDeprecated: true) {
-    name
-    description
-    isDeprecated
-    deprecationReason
-  }
-  possibleTypes {
-    ...TypeRef
-  }
-}
-
-fragment InputValue on __InputValue {
-  name
-  description
-  type {
-    ...TypeRef
-  }
-  defaultValue
-}
-
-fragment TypeRef on __Type {
-  kind
-  name
-  ofType {
-    kind
-    name
-    ofType {
-      kind
-      name
-      ofType {
-        kind
-        name
-        ofType {
-          kind
-          name
-          ofType {
-            kind
-            name
-            ofType {
-              kind
-              name
-              ofType {
-                kind
-                name
-              }
-            }
+query getSite($id: uuid!) {
+  site(id: $id) {
+    id
+    latitude
+    longitude
+    pipes {
+      premise_number
+      meter {
+        low_head {
+          physical_number
+          virtual_number
+          register {
+            number
+            __typename
           }
+          __typename
         }
+        high_head {
+          physical_number
+          virtual_number
+          register {
+            number
+            __typename
+          }
+          __typename
+        }
+        __typename
       }
+      __typename
     }
+    __typename
   }
 }`;
 
-let variables = {};
+let variables = { id: "abcd"};
 
 console.log(getQuery(query, variables));
