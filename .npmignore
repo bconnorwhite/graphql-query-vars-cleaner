@@ -1,5 +1,5 @@
 src
-tsconfig.json
-node_modules
 .gitignore
+.gitmodules
 test.js
+tsconfig.json
