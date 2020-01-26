@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { jsonToGraphQLQuery, VariableType } from '../json-to-graphql-query/src';
+import { jsonToGraphQLQuery, VariableType } from './json-to-graphql-query/src';
 
 const isEmpty = (object: any) => {
   return Object.keys(object).length === 0;
