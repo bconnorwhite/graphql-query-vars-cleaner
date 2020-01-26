@@ -20,5 +20,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ConnorWhite/graphql-query-vars-cleaner"
-  }
+  },
+  "files": [
+    "build/*"
+  ]
 }
