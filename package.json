@@ -1,0 +1,21 @@
+{
+  "name": "graphql-query-vars-cleaner",
+  "version": "1.0.0",
+  "description": "Remove undefined variables from a GraphQL query",
+  "main": "./build/index.js",
+  "author": "Connor White",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "rebuild": "rm -r build && npm run build",
+    "test": "yarn run build && node ./test.js"
+  },
+  "dependencies": {
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.1",
+    "json-to-graphql-query": "^1.9.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.5"
+  }
+}
