@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
+import { jsonToGraphQLQuery, VariableType } from '../json-to-graphql-query/src';
 
 const isEmpty = (object: any) => {
   return Object.keys(object).length === 0;
@@ -54,7 +54,11 @@ const getField = (selection: any, variables: {}) => {
 const getSelections = (selections: any[]=[], variables: {}) => {
   let json = {};
   selections.forEach((selection) => {
-    json[selection.name.value] = getField(selection, variables);
+    if(selection.kind === "Field") {
+      json[selection.name.value] = getField(selection, variables);
+    } else if(selection.kind === "FragmentSpread") {
+      json["__on"] = selection.name.value;
+    }
   });
   return json;
 }
