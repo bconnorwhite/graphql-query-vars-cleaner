@@ -72,7 +72,11 @@ const getQuery = (query: string, variables: {}={}): string => {
   let ast = gql(query);
   let json = {};
   ast.definitions.forEach((definition) => {
-    json[definition.operation] = getDefinition(definition, variables);
+    if(definition.kind === "FragmentDefinition") {
+      json[`fragment ${definition.name.value} on ${definition.typeCondition.name.value}`] = getDefinition(definition, variables);
+    } else if(definition.kind === "OperationDefinition") {
+      json[`${definition.operation}${definition.name ? " " + definition.name.value : ""}`] = getDefinition(definition, variables);
+    }
   });
   return jsonToGraphQLQuery(json);
 }
