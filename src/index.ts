@@ -60,7 +60,7 @@ const getSelections = (selections: any[]=[], variables: {}) => {
     if(selection.kind === "Field") {
       json[selection.alias ? selection.alias.value : selection.name.value] = getField(selection, variables);
     } else if(selection.kind === "FragmentSpread") {
-      json["__all_on"] = selection.name.value;
+      json["__all_on"] = [selection.name.value];
     }
   });
   return json;
