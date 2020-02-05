@@ -19,6 +19,11 @@ iterall@^1.2.2:
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.3.0.tgz#afcb08492e2915cbd8a0884eb93a8c94d0d72fea"
   integrity sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg==
 
+json-to-graphql-query@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/json-to-graphql-query/-/json-to-graphql-query-2.0.0.tgz#2b0364a1be891ee530947db3cfbcae0ce583976e"
+  integrity sha512-+oFKHOVymP+jDETuLCl+ich+F7b8ym0vdczmOs8aJbtRd61+YGugVrtrI4xh5zfY1ZAVFG+zTAAsfDS1t5+17g==
+
 typescript@^3.7.5:
   version "3.7.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"

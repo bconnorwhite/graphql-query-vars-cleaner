@@ -1,3 +1,0 @@
-[submodule "src/json-to-graphql-query"]
-	path = src/json-to-graphql-query
-	url = http://github.com/ConnorWhite/json-to-graphql-query.git
