@@ -46,7 +46,7 @@ const getField = (selection: any, variables: {}) => {
       json["__args"] = args;
     }
     if(selection.alias) {
-      json["__aliasFor"] = selection.alias.value;
+      json["__aliasFor"] = selection.name.value;
     }
     return json;
   } else {
@@ -58,7 +58,7 @@ const getSelections = (selections: any[]=[], variables: {}) => {
   let json = {};
   selections.forEach((selection) => {
     if(selection.kind === "Field") {
-      json[selection.name.value] = getField(selection, variables);
+      json[selection.alias ? selection.alias.value : selection.name.value] = getField(selection, variables);
     } else if(selection.kind === "FragmentSpread") {
       json["__all_on"] = selection.name.value;
     }
