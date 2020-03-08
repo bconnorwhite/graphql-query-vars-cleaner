@@ -39,19 +39,18 @@ const getArgs = (args: any[]=[], variables: {}) => {
 }
 
 const getField = (selection: any, variables: {}) => {
+  let json = {};
   if(selection.selectionSet !== undefined) {
-    let json = getSelections(selection.selectionSet.selections, variables);
-    const args = getArgs(selection.arguments, variables);
-    if(!isEmpty(args)) {
-      json["__args"] = args;
-    }
-    if(selection.alias) {
-      json["__aliasFor"] = selection.name.value;
-    }
-    return json;
-  } else {
-    return true;
+    json = getSelections(selection.selectionSet.selections, variables);
   }
+  const args = getArgs(selection.arguments, variables);
+  if(!isEmpty(args)) {
+    json["__args"] = args;
+  }
+  if(selection.alias) {
+    json["__aliasFor"] = selection.name.value;
+  }
+  return json;
 };
 
 const getSelections = (selections: any[]=[], variables: {}) => {
