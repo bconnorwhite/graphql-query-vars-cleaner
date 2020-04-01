@@ -33,6 +33,8 @@ const getArgs = (args: any[]=[], variables: {}) => {
       }
     } else if(arg.value.kind === "Variable" && variables[arg.value.name.value] !== undefined) {
       json[arg.name.value] = new VariableType(arg.value.name.value);
+    } else {
+      json[arg.name.value] = arg.value.value;
     }
   });
   return json;
