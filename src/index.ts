@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { jsonToGraphQLQuery, VariableType } from "json-to-graphql-query";
+import { jsonToGraphQLQuery, VariableType, EnumType } from "json-to-graphql-query";
 
 const isEmpty = (object: any) => {
   return Object.keys(object).length === 0;
@@ -33,8 +33,12 @@ const getArgs = (args: any[]=[], variables: {}) => {
       }
     } else if(arg.value.kind === "Variable" && variables[arg.value.name.value] !== undefined) {
       json[arg.name.value] = new VariableType(arg.value.name.value);
-    } else if(arg.value.value) {
+    } else if(arg.value.kind === "IntValue") {
+      json[arg.name.value] = parseInt(arg.value.value);
+    } else if(arg.value.kind === "StringValue") {
       json[arg.name.value] = arg.value.value;
+    } else if(arg.value.kind === "EnumValue") {
+      json[arg.name.value] = new EnumType(arg.value.value);
     }
   });
   return json;
