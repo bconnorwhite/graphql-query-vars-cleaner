@@ -15,7 +15,7 @@
     "json-to-graphql-query": "^2.0.0"
   },
   "devDependencies": {
-    "@bconnorwhite/bob": "^1.4.3"
+    "@bconnorwhite/bob": "^1.8.0"
   },
   "peerDependencies": {
     "graphql": "^15.3.0"
