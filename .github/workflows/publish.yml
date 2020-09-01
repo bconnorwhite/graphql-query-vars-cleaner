@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set In Progress Status
-        uses: unacast/actions-github-deployment-status@v0.2
+        uses: unacast/actions-github-deployment-status
         with:
           github_token: ${{ secrets.TOKEN }}
           status: in_progress
