@@ -10,7 +10,7 @@ jobs:
         with:
           state: in_progress
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
@@ -24,10 +24,10 @@ jobs:
         with:
           state: success
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - uses: avakar/set-deployment-status@v1
         if: failure()
         with:
           state: failure
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
