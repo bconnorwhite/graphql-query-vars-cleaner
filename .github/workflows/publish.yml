@@ -6,28 +6,34 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: avakar/set-deployment-status@v1
+      - name: Set In Progress Status
+        uses: unacast/actions-github-deployment-status@v0.2
         with:
-          state: in_progress
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+          github_token: ${{ secrets.TOKEN }}
+          status: in_progress
+          description: "publish in progress..."
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Node Setup
+        uses: actions/setup-node@v1
         with:
           node-version: 10
-      - run: yarn
-      - run: yarn add -P graphql
-      - uses: JS-DevTools/npm-publish@v1
+      - name: Yarn
+        run: yarn && yarn add -P graphql
+      - name: Publish to NPM
+        uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-      - uses: avakar/set-deployment-status@v1
+      - name: Set Success Status
+        uses: unacast/actions-github-deployment-status@v0.2
         with:
-          state: success
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      - uses: avakar/set-deployment-status@v1
+          github_token: ${{ secrets.TOKEN }}
+          status: success
+          description: "published"
+      - name: Set Failure Status
         if: failure()
+        uses: unacast/actions-github-deployment-status@v0.2
         with:
-          state: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
+          status: failure
+          description: "publish failed"
