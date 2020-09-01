@@ -9,12 +9,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - uses: chrnorm/deployment-action@releases/v1
-        name: Create GitHub deployment
-        id: deployment
+      - name: Pending Commit Status
+        uses: ouzi-dev/commit-status-updater@v1.0.4
         with:
-          token: "${{ github.token }}"
-          target_url: https://www.npmjs.com/package/graphql-query-vars-cleaner
+          status: pending
 
       - name: Node Setup
         uses: actions/setup-node@v1
@@ -29,20 +27,18 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
 
-      - name: Update deployment status (success)
+      - name: Success Commit Status
         if: success()
-        uses: chrnorm/deployment-status@releases/v1
+        uses: ouzi-dev/commit-status-updater@v1.0.4
         with:
-          token: "${{ github.token }}"
-          target_url: https://www.npmjs.com/package/graphql-query-vars-cleaner
-          state: "success"
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          status: success
+          url: https://www.npmjs.com/package/graphql-query-vars-cleaner
+          description: "published to NPM"
 
-      - name: Update deployment status (failure)
+      - name: Failure Commit Status
         if: failure()
-        uses: chrnorm/deployment-status@releases/v1
+        uses: ouzi-dev/commit-status-updater@v1.0.4
         with:
-          token: "${{ github.token }}"
-          target_url: https://www.npmjs.com/package/graphql-query-vars-cleaner
-          state: "failure"
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          status: failure
+          description: "publish failed"
+          
