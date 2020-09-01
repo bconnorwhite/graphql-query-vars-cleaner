@@ -25,14 +25,14 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
       - name: Set Success Status
-        uses: unacast/actions-github-deployment-status@v0.2
+        uses: unacast/actions-github-deployment-status@v0.3.0
         with:
           github_token: ${{ secrets.TOKEN }}
           status: success
           description: "published"
       - name: Set Failure Status
         if: failure()
-        uses: unacast/actions-github-deployment-status@v0.2
+        uses: unacast/actions-github-deployment-status@v0.3.0
         with:
           github_token: ${{ secrets.TOKEN }}
           status: failure
