@@ -1,5 +1,4 @@
 .github
 src
 .gitignore
-test.js
-tsconfig.json
+tests

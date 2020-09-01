@@ -7,15 +7,16 @@
   "license": "MIT",
   "scripts": {
     "build": "bob build",
-    "test": "yarn run build && node ./test.js",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build && yarn test",
+    "test": "jest"
   },
   "dependencies": {
     "graphql-tag": "^2.10.1",
     "json-to-graphql-query": "^2.0.0"
   },
   "devDependencies": {
-    "@bconnorwhite/bob": "^1.8.0"
+    "@bconnorwhite/bob": "^1.8.0",
+    "jest": "^26.4.2"
   },
   "peerDependencies": {
     "graphql": "^15.3.0"
