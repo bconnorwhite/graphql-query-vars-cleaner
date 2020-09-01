@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Pending Commit Status
-        run: curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA -H "Authorization: token ${{ github.token }}" -d '{"state":"pending","target_url":"https://www.npmjs.com/package/graphql-query-vars-cleaner","description":"publishing to NPM","context":"publish"'
+        run: 'curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA -H "Authorization: token ${{ github.token }}" -d \"{"state":"pending","target_url":"https://www.npmjs.com/package/graphql-query-vars-cleaner","description":"publishing to NPM","context":"publish"}\"'
 
       - name: Node Setup
         uses: actions/setup-node@v1
@@ -27,9 +27,9 @@ jobs:
 
       - name: Success Commit Status
         if: success()
-        run: curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA -H "Authorization: token ${{ github.token }}" -d '{"state":"success","target_url":"https://www.npmjs.com/package/graphql-query-vars-cleaner","description":"published to NPM","context":"publish"'
+        run: 'curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA -H "Authorization: token ${{ github.token }}" -d \"{"state":"success","target_url":"https://www.npmjs.com/package/graphql-query-vars-cleaner","description":"published to NPM","context":"publish"}\"'
 
       - name: Failure Commit Status
         if: failure()
-        run: curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA -H "Authorization: token ${{ github.token }}" -d '{"state":"failure","target_url":"https://www.npmjs.com/package/graphql-query-vars-cleaner","description":"publish failed","context":"publish"'
+        run: 'curl -X POST https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA -H "Authorization: token ${{ github.token }}" -d \"{"state":"failure","target_url":"https://www.npmjs.com/package/graphql-query-vars-cleaner","description":"publish failed","context":"publish"}\"'
           
