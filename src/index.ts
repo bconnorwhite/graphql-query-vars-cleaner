@@ -196,6 +196,8 @@ const getArgValue = (value: Value, variables: Variables): any => {
     return new EnumType(value.value);
   } else if(value.kind === "ListValue") {
     return value.values.map((val) => getArgValue(val, variables));
+  } else if(value.kind === "BooleanValue") {
+    return value.value;
   } else {
     return undefined;
   }
