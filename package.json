@@ -3,8 +3,27 @@
   "version": "1.6.0",
   "description": "Remove undefined variables from a GraphQL query",
   "main": "./build/index.js",
-  "author": "Connor White",
+  "author": "Connor White <connor.bcw@gmail.com>",
   "license": "MIT",
+  "homepage": "https://connorwhite.org/github/graphql-query-vars-cleaner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ConnorWhite/graphql-query-vars-cleaner"
+  },
+  "keywords": [
+    "graphql",
+    "query",
+    "undefined",
+    "vars",
+    "variables",
+    "hasura",
+    "apollo",
+    "clean",
+    "cleaner",
+    "remove",
+    "null",
+    "queries"
+  ],
   "scripts": {
     "build": "bob build",
     "prepublishOnly": "yarn build && yarn test",
@@ -20,12 +39,5 @@
   },
   "peerDependencies": {
     "graphql": "^15.3.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ConnorWhite/graphql-query-vars-cleaner"
-  },
-  "files": [
-    "build/*"
-  ]
+  }
 }
