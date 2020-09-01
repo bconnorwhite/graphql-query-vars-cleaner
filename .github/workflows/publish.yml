@@ -6,6 +6,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - uses: avakar/set-deployment-status@v1
+        with:
+          state: in_progress
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
@@ -15,3 +20,14 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
+      - uses: avakar/set-deployment-status@v1
+        with:
+          state: success
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: avakar/set-deployment-status@v1
+        if: failure()
+        with:
+          state: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
