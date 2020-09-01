@@ -4,7 +4,7 @@
     <img alt="npm" src="https://img.shields.io/npm/v/graphql-query-vars-cleaner.svg">
   </a>
   <a href="https://github.com/bconnorwhite/graphql-query-vars-cleaner">
-    <img alt="typescript" src="https://img.shields.io/github/languages/top/bconnorwhite/npm-pd.svg">
+    <img alt="typescript" src="https://img.shields.io/github/languages/top/bconnorwhite/graphql-query-vars-cleaner.svg">
   </a>
   <a href="https://github.com/bconnorwhite/graphql-query-vars-cleaner">
     <img alt="GitHub stars" src="https://img.shields.io/github/stars/bconnorwhite/graphql-query-vars-cleaner?label=Stars%20Appreciated%21&style=social">
