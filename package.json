@@ -22,7 +22,10 @@
     "cleaner",
     "remove",
     "null",
-    "queries"
+    "queries",
+    "strip",
+    "schema",
+    "parse"
   ],
   "scripts": {
     "build": "bob build",
