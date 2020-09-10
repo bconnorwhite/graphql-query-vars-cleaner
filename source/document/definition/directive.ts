@@ -1,2 +1,2 @@
 
-export type Directive = any;
+export type Directive = unknown;
