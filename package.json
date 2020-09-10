@@ -27,6 +27,9 @@
     "schema",
     "parse"
   ],
+  "files": [
+    "build"
+  ],
   "scripts": {
     "build": "bob build",
     "prepublishOnly": "yarn build && yarn test",
