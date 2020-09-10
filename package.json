@@ -2,9 +2,8 @@
   "name": "graphql-query-vars-cleaner",
   "version": "1.7.2",
   "description": "Remove undefined variables from a GraphQL query",
-  "main": "./build/index.js",
-  "author": "Connor White <connor.bcw@gmail.com>",
   "license": "MIT",
+  "author": "Connor White <connor.bcw@gmail.com>",
   "homepage": "https://connorwhite.org/github/graphql-query-vars-cleaner",
   "repository": {
     "type": "git",
@@ -30,17 +29,21 @@
   "files": [
     "build"
   ],
+  "main": "./build/index.js",
   "scripts": {
     "build": "bob build",
+    "postversion": "git push",
     "prepublishOnly": "yarn build && yarn test",
     "test": "jest"
   },
   "dependencies": {
     "graphql-tag": "^2.10.1",
+    "is-obj-empty": "^1.0.0",
     "json-to-graphql-query": "^2.0.0"
   },
   "devDependencies": {
-    "@bconnorwhite/bob": "^1.8.0",
+    "@bconnorwhite/bob": "^2.1.0",
+    "graphql": "^15.3.0",
     "jest": "^26.4.2"
   },
   "peerDependencies": {
