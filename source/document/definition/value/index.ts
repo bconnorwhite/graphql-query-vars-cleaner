@@ -7,9 +7,10 @@ import { ListValue, isListValue, getListValue } from "./list-value";
 import { EnumValue, isEnumValue, getEnumValue } from "./enum-value";
 import { StringValue, isStringValue, getStringValue } from "./string-value";
 import { IntValue, isIntValue, getIntValue } from "./int-value";
+import { FloatValue, isFloatValue, getFloatValue } from "./float-value";
 import { BooleanValue, isBooleanValue, getBooleanValue } from "./boolean-value";
 
-export type Value = StringValue | ObjectValue | BooleanValue | IntValue | Variable | EnumValue | ListValue;
+export type Value = StringValue | ObjectValue | BooleanValue | IntValue | FloatValue | Variable | EnumValue | ListValue;
 
 export type ValueResult = ValueResult[] | ArgsResult | VariableType | EnumType | string | number | boolean | undefined;
 
@@ -26,6 +27,8 @@ export function getValue(value: Value, variables: Variables): ValueResult {
     return getStringValue(value);
   } else if(isIntValue(value)) {
     return getIntValue(value);
+  } else if(isFloatValue(value)) {
+    return getFloatValue(value);
   } else if(isBooleanValue(value)) {
     return getBooleanValue(value);
   } else {
