@@ -12,5 +12,6 @@ export function isListValue(value: Value): value is ListValue {
 }
 
 export function getListValue(value: ListValue, variables: Variables) {
-  return value.values.map((value) => getValue(value, variables));
+  const list = value.values.map((value) => getValue(value, variables)).filter((value) => value !== undefined);
+  return list.length === 0 ? undefined : list;
 }
